@@ -15,13 +15,13 @@ export async function GET() {
         const result = await client.query('SELECT * FROM tbl_user');
         return new Response(JSON.stringify(result.rows), {
             status: 200,
-            headers: { "Content-Type": "application/json" },
+            headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
         });
     } catch (error) {
 
-        return new Response(JSON.stringify({ error: "Internal Server Error" }), {
+        return new Response(JSON.stringify({ error: error.message }), {
             status: 500,
-            headers: { "Content-Type": "application/json" },
+      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
         });
     }
 }
